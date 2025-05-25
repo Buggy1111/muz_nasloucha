@@ -1,0 +1,250 @@
+body { 
+  background: #18181c; 
+  color: #ffe679; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  min-height: 100vh; 
+  font-family: 'Poppins', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Pulzující text */
+@keyframes text-pulse {
+  0% { 
+    text-shadow: 0 0 2px #ffe679, 0 0 8px #ffe67940, 0 0 0 #fff0;
+    transform: scale(1);
+  }
+  50% { 
+    text-shadow: 0 0 8px #ffe679, 0 0 32px #ffe67988, 0 0 2px #fff5;
+    transform: scale(1.08);
+  }
+  100% { 
+    text-shadow: 0 0 2px #ffe679, 0 0 8px #ffe67940, 0 0 0 #fff0;
+    transform: scale(1);
+  }
+}
+.logo, .main-msg {
+  animation: text-pulse 2.5s infinite cubic-bezier(.62,.11,.31,.97);
+  transition: color 0.3s;
+}
+
+.logo {
+  font-size: 2.5rem; 
+  margin-bottom: 32px; 
+  font-weight: 800;
+  letter-spacing: -1px;
+  text-align: center;
+}
+.main-msg {
+  font-size: 2.1rem; 
+  margin-bottom: 18px; 
+  font-weight: 700;
+  text-align: center;
+}
+.desc {
+  font-size: 1.13rem; 
+  margin-bottom: 28px;
+  color: #fffde3;
+  text-align: center;
+  max-width: 410px;
+}
+.contact {
+  font-size: 1rem; 
+  color: #ffe679; 
+  text-align: center;
+}
+.contact a {
+  color: #ffe679;
+  text-decoration: underline;
+}
+
+/* Pulzující panel dole */
+.bottom-nav.coming-soon {
+  position: fixed;
+  left: 50%;
+  bottom: 26px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 16px;
+  background: linear-gradient(112deg, rgba(250,250,254,0.98) 70%, rgba(236,238,241,0.93) 100%);
+  border-radius: 25px;
+  padding: 20px 27px;
+  z-index: 99;
+  border: 1.6px solid #e2e3e7;
+  box-shadow:
+    0 8px 28px 0 rgba(60,60,80,0.18),
+    0 1.3px 12px 6.5px #ededf6,
+    0 1px 5px 0px #ececf4;
+  backdrop-filter: blur(22px);
+  animation: panel-pulse 2.2s infinite;
+  transition: box-shadow 0.32s cubic-bezier(.6,.13,.42,.88), border 0.22s;
+}
+
+@keyframes panel-pulse {
+  0% {
+    box-shadow:
+      0 8px 28px 0 rgba(60,60,80,0.18),
+      0 1.3px 12px 6.5px #ededf6,
+      0 1px 5px 0px #ececf4;
+  }
+  50% {
+    box-shadow:
+      0 23px 78px 16px rgba(80,80,100,0.26),
+      0 10px 33px 13px #e7e7f2,
+      0 5px 23px 6px #e4e4ef;
+  }
+  100% {
+    box-shadow:
+      0 8px 28px 0 rgba(60,60,80,0.18),
+      0 1.3px 12px 6.5px #ededf6,
+      0 1px 5px 0px #ececf4;
+  }
+}
+.bottom-nav .nav-btn {
+  background: linear-gradient(180deg, #f5f5fa 88%, #edeef6 100%);
+  border: 1.4px solid #dadbe2;
+  color: #18181c;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 0.98rem;
+  font-weight: 700;
+  border-radius: 14px;
+  padding: 15px 28px 15px 15px;
+  box-shadow: 0 1px 5px 0px #ececf4, 
+              inset 0 1px 8px #f2f2fa;
+  cursor: default;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  font-variant-ligatures: contextual;
+  margin: 0;
+}
+.bottom-nav .nav-btn .icon {
+  margin-right: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bottom-nav .nav-btn.active {
+  background: linear-gradient(180deg, #18181c 98%, #232329 100%);
+  color: #ffe679;
+  border: 1.4px solid #18181c;
+  font-weight: 800;
+  box-shadow: 0 0 0 3px #f3f3f7, 0 3px 8px 1.5px #bdbdbd;
+  transform: scale(1.13);
+  z-index: 2;
+}
+.bottom-nav .nav-btn .icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: #ffe679;
+  filter: drop-shadow(0 0 3px #23232944);
+}
+
+/* Responzivita pro mobil/tablet */
+@media (max-width: 600px) {
+  .logo { font-size: 1.25rem; }
+  .main-msg { font-size: 1rem; }
+  .desc { font-size: 0.97rem; max-width: 97vw; }
+  .contact { font-size: 0.93rem; }
+  .bottom-nav.coming-soon {
+    padding: 9px 8px;
+    gap: 7px;
+    border-radius: 17px;
+    left: 50%;
+    bottom: 13px;
+    min-width: 0;
+    max-width: 96vw;
+  }
+  .bottom-nav .nav-btn {
+    font-size: 0.87rem;
+    padding: 8px 11px 8px 8px;
+    border-radius: 8px;
+  }
+  .bottom-nav .nav-btn .icon svg {
+    width: 14px; height: 14px;
+  }
+}
+.strom-roh {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  width: 90px;         /* můžeš upravit dle libosti */
+  height: auto;
+  z-index: 200;
+  filter: drop-shadow(0 0 12px #18181c33);
+  /* Pokud chceš méně rušit, zkus třeba: opacity: 0.94; */
+}
+@media (max-width: 600px) {
+  .strom-roh {
+    width: 40px;
+    top: 7px;
+    left: 7px;
+  }
+}
+@keyframes strom-breath {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.055); }
+  60% { transform: scale(0.97); }
+  100% { transform: scale(1); }
+}
+
+.strom-roh {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  width: 90px;
+  height: auto;
+  z-index: 200;
+  filter: drop-shadow(0 0 12px #18181c33);
+  animation: strom-breath 4.2s cubic-bezier(.71,0,.29,1) infinite;
+}
+.contact {
+  font-size: 1rem; 
+  color: #ffe679; 
+  text-align: center;
+}
+.contact a {
+  color: #3cbb54; /* WhatsApp zelená */
+  text-decoration: underline;
+  font-weight: 600;
+}
+.wa-ico {
+  font-size: 1.2em;
+  vertical-align: middle;
+  margin-right: 2px;
+}
+@keyframes wa-pulse {
+  0%   { color: #3cbb54; text-shadow: 0 0 2px #fff; transform: scale(1);}
+  40%  { color: #25D366; text-shadow: 0 0 12px #25D36699, 0 0 3px #fff;}
+  60%  { color: #25D366; text-shadow: 0 0 16px #25D366cc, 0 0 7px #fff;}
+  100% { color: #3cbb54; text-shadow: 0 0 2px #fff; transform: scale(1);}
+}
+
+.wa-anim {
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  animation: wa-pulse 2.4s cubic-bezier(.68,.01,.29,.99) infinite;
+  transition: color 0.25s;
+}
+
+.logo, .main-msg {
+  animation: text-pulse 2.5s infinite cubic-bezier(.62,.11,.31,.97);
+  transition: color 0.3s;
+  text-shadow: 0 0 7px #ffe67988, 0 1.5px 1.5px #fff3, 0 0 1px #fff6;
+}
+@keyframes text-pulse {
+  0% { text-shadow: 0 0 4px #ffe67977, 0 1.5px 1.5px #fff3; }
+  50% { text-shadow: 0 0 16px #ffe679bb, 0 2.5px 2.5px #fff7; }
+  100% { text-shadow: 0 0 4px #ffe67977, 0 1.5px 1.5px #fff3; }
+}
+
